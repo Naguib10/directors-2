@@ -1,4 +1,5 @@
 import DirectorCard from "./components/DirectorCard";
+import CreateForm from "./components/CreateForm";
 import React, { useState, useEffect } from "react";
 import { ReactDOM } from "react";
 import axios from "axios";
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="App">
+      <CreateForm />
       {directors.map((director, id) => {
         return <DirectorCard key={id} name={director.name} dob={director.dob} />
       })}
