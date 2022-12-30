@@ -26,9 +26,10 @@ function App() {
 
   return (
     <div className="App">
-      <CreateForm />
+      {/* <img src='/photos/1672418198829.jpg' /> */}
+      <CreateForm setDirectors={setDirectors} />
       {directors.map((director, id) => {
-        return <DirectorCard key={id} name={director.name} dob={director.dob} />
+        return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
       })}
     </div>
   );
