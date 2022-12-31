@@ -13,7 +13,8 @@ function TextExample(props) {
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Director</Card.Subtitle>
                 <Card.Text>
-                    Born in {props.dob}
+                    {props.dop}<br></br>
+                    Directed by {props.director}
                 </Card.Text>
                 {/* <Card.Link href="#">Card Link</Card.Link>
                 <Card.Link href="#">Another Link</Card.Link> */}

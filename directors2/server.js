@@ -30,6 +30,13 @@ app.get("/test", async (req, res) => {
     res.send("it works");
 })
 
+app.get("/movies", async (req, res) => {
+    //res.send("hello there");
+    const allMovies = await db.collection('movies').find().toArray();
+    res.json(allMovies);
+
+})
+
 app.post("/create-director", upload.single("photo"), myCleanup, async (req, res) => {
     if (req.file) {
         const photoFileName = `${Date.now()}.jpg`;
@@ -40,6 +47,19 @@ app.post("/create-director", upload.single("photo"), myCleanup, async (req, res)
     const info = await db.collection("directors").insertOne(req.cleanData);
     const newDirector = await db.collection("directors").findOne({ _id: new ObjectId(info.insertedId) })
     res.send(newDirector);
+    //console.log("the new is " + newDirector);
+})
+
+app.post("/create-movie", upload.single("photo"), async (req, res) => {
+    if (req.file) {
+        const photoFileName = `${Date.now()}.jpg`;
+        await sharp(req.file.buffer).resize(600, 600).jpeg({ quality: 60 }).toFile(path.join("public", "photos", photoFileName));
+        req.body.photo = photoFileName;
+    }
+
+    const info = await db.collection("movies").insertOne(req.body);
+    const newMovie = await db.collection("movies").findOne({ _id: new ObjectId(info.insertedId) })
+    res.send(newMovie);
     //console.log("the new is " + newDirector);
 })
 
