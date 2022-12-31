@@ -32,9 +32,11 @@ app.get("/test", async (req, res) => {
 
 app.get("/movies", async (req, res) => {
     //res.send("hello there");
-    const allMovies = await db.collection('movies').find({ director: "Darren Aronofsky" }).toArray();
+    //var chosenDirector = req.body.director;
+    chosenDirector = "Darren Aronofsky";
+    const allMovies = await db.collection('movies').find({ director: chosenDirector }).toArray();
     res.json(allMovies);
-    console.log(allMovies);
+    //console.log(allMovies);
 
 })
 

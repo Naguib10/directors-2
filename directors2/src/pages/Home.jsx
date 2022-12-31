@@ -3,6 +3,7 @@ import DirectorCard from "../components/DirectorCard";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
+import { Row, Col } from "react-bootstrap";
 
 export const Home = () => {
 
@@ -30,11 +31,17 @@ export const Home = () => {
 
 
     return (
-        <div>
-            {directors.map((director, id) => {
-                return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
-            })}
-
+        <div
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+            <Row>
+                {directors.map((director, id) => {
+                    return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
+                })}
+            </Row>
             <button onClick={logD}>log directors</button>
         </div>
     )

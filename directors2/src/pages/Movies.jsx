@@ -3,6 +3,7 @@ import MovieCard from "../components/MovieCard";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
+import { Row, Col } from "react-bootstrap";
 
 export const Movies = () => {
 
@@ -30,11 +31,17 @@ export const Movies = () => {
 
 
     return (
-        <div>
-            {movies.map((movie, id) => {
-                return <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
-            })}
-
+        <div
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+            <Row>
+                {movies.map((movie, id) => {
+                    return <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
+                })}
+            </Row>
         </div>
     )
 }
