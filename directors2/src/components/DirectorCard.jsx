@@ -2,7 +2,9 @@ import Card from 'react-bootstrap/Card';
 
 function TextExample(props) {
     return (
+
         <Card style={{ width: '18rem' }}>
+
             <Card.Body>
                 {/* <img src={props.photo ? `/photos/${props.photo}` : ''} /> */}
                 <Card.Img variant="top" src={`/photos/${props.photo}`} alt={props.name} />
@@ -13,8 +15,11 @@ function TextExample(props) {
                 </Card.Text>
                 {/* <Card.Link href="#">Card Link</Card.Link>
                 <Card.Link href="#">Another Link</Card.Link> */}
+                <a href='http://localhost:5000/test' className='stretched-link'></a>
             </Card.Body>
-        </Card>
+
+        </Card >
+
     );
 }
 

@@ -26,6 +26,10 @@ app.get("/", async (req, res) => {
 
 })
 
+app.get("/test", async (req, res) => {
+    res.send("it works");
+})
+
 app.post("/create-director", upload.single("photo"), myCleanup, async (req, res) => {
     if (req.file) {
         const photoFileName = `${Date.now()}.jpg`;
