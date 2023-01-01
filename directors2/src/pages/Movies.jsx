@@ -38,9 +38,11 @@ export const Movies = () => {
                 justifyContent: 'center'
             }}>
             <Row>
-                {movies.map((movie, id) => {
-                    return <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
-                })}
+                {movies.map((movie, id) => (
+                    <Col className="col-md-3" key={id}>
+                        <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
+                    </Col>
+                ))}
             </Row>
         </div>
     )

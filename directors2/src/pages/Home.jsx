@@ -37,16 +37,18 @@ export const Home = () => {
             style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+
             }}>
 
 
             <Row>
-                {directors.map((director, id) => {
-                    return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
-                })}
+                {directors.map((director, id) => (
+                    <Col className="col-md-3" key={id}>
+                        <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
+                    </Col>
+                ))}
             </Row>
-            <button onClick={logD}>log directors</button>
+            {/* <button onClick={logD}>log directors</button> */}
         </div>
     )
 }

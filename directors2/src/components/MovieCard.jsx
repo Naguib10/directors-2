@@ -11,9 +11,9 @@ function TextExample(props) {
                 {/* <img src={props.photo ? `/photos/${props.photo}` : ''} /> */}
                 <Card.Img variant="top" src={`/photos/${props.photo}`} alt={props.name} />
                 <Card.Title>{props.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Director</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">{props.dop}</Card.Subtitle>
                 <Card.Text>
-                    {props.dop}<br></br>
+                    {/* {props.dop}<br></br> */}
                     Directed by {props.director}
                 </Card.Text>
                 {/* <Card.Link href="#">Card Link</Card.Link>

@@ -17,7 +17,7 @@ function TextExample(props) {
                 </Card.Text>
                 {/* <Card.Link href="#">Card Link</Card.Link>
                 <Card.Link href="#">Another Link</Card.Link> */}
-                <a href='http://localhost:5000/test' className='stretched-link'></a>
+                <a href='http://localhost:3000/movies' className='stretched-link'></a>
             </Card.Body>
 
         </Card >

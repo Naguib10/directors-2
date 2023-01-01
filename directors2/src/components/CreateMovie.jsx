@@ -46,15 +46,15 @@ function BasicExample(props) {
                         <Form.Control onChange={e => setDop(e.target.value)} value={dop} type="text" placeholder="Year of Production" />
                     </Form.Group>
                     <Form.Group controlId="formBasicSelect">
-                        <Form.Label>Select Director</Form.Label>
-                        <Form.Control as="select" value={director} onChange={e => setDirector(e.target.value)}>
-
+                        <Form.Control as="select" value={director} onChange={e => setDirector(e.target.value)} placeholder="Director">
+                            <option disabled value={0} key={0}>Choose the director</option>
                             {props.directors.map((director, id) => {
                                 return <option value={director.name} key={id}>{director.name}</option>
                             })}
 
                         </Form.Control>
                     </Form.Group>
+                    <br></br>
                     <Form.Group className="mb-3" controlId="formPhoto">
                         <Form.Control ref={CreatePhotoField} onChange={e => setFile(e.target.files[0])} type="file" placeholder="Upload photo" />
                     </Form.Group>
