@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 import { Row, Col } from "react-bootstrap";
+import Nav from '../components/Nav'
 
 export const Home = () => {
 
@@ -31,12 +32,15 @@ export const Home = () => {
 
 
     return (
+
         <div
             style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
+
+
             <Row>
                 {directors.map((director, id) => {
                     return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />

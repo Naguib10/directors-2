@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Axios from "axios";
 import React, { useState, useRef } from "react";
+import Select from "../components/Select";
 
 function BasicExample(props) {
 
@@ -44,18 +45,27 @@ function BasicExample(props) {
                     <Form.Group className="mb-3" controlId="formDate">
                         <Form.Control onChange={e => setDop(e.target.value)} value={dop} type="text" placeholder="Year of Production" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formDate">
-                        <Form.Control onChange={e => setDirector(e.target.value)} value={director} type="text" placeholder="Directed by" />
+                    <Form.Group controlId="formBasicSelect">
+                        <Form.Label>Select Director</Form.Label>
+                        <Form.Control as="select" value={director} onChange={e => setDirector(e.target.value)}>
+
+                            {props.directors.map((director, id) => {
+                                return <option value={director.name} key={id}>{director.name}</option>
+                            })}
+
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formPhoto">
                         <Form.Control ref={CreatePhotoField} onChange={e => setFile(e.target.files[0])} type="file" placeholder="Upload photo" />
                     </Form.Group>
+
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
             </div>
         </div>
+
     );
 }
 

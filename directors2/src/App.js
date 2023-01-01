@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 import { Home } from "./pages/Home";
+import Nav from "./components/Nav";
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
 
   useEffect(() => {
     //console.log(directors);
-    //fetchData();
+    fetchData();
 
   }, [])
 
@@ -34,12 +35,12 @@ function App() {
       {directors.map((director, id) => {
         return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
       })} */}
-
+      <Nav />
 
       <Routes>
         <Route path="/" element={<Home />}>Home</Route>
-        <Route path="/add-d" element={<CreateForm />}>Add Directors</Route>
-        <Route path="/add-m" element={<CreateMovie />}>Add Movies</Route>
+        <Route path="/add-d" element={<CreateForm setDirectors={setDirectors} />}>Add Directors</Route>
+        <Route path="/add-m" element={<CreateMovie directors={directors} />}>Add Movies</Route>
         <Route path="/movies" element={<Movies />}>Movies</Route>
       </Routes>
 
