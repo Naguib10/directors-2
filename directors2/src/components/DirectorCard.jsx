@@ -14,7 +14,7 @@ function TextExample(props) {
 
     return (
 
-        <Card onClick={showMovies} style={{ width: '18rem' }}>
+        <Card onClick={showMovies} >
 
             <Card.Body>
                 <Link to={`/movies/${props.name}`} style={{ textDecoration: 'none' }}>

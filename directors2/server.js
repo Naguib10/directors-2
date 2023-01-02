@@ -40,11 +40,10 @@ app.get("/movies", async (req, res) => {
 })
 
 app.get("/movies/:name", async (req, res) => {
-    //res.send("hello there");
-    //var chosenDirector = req.params.director;
-    //console.log("the id is " + req.params.name);
-    const allMovies = await db.collection('movies').find({ director: req.params.name }).toArray();
+    const chosenDirector = req.params.name;
+    const allMovies = await db.collection('movies').find({ director: chosenDirector }).toArray();
     res.json(allMovies);
+    //console.log(chosenDirector);
 
 })
 

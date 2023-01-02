@@ -4,16 +4,22 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 import { Row, Col } from "react-bootstrap";
+import { useLocation } from 'react-router-dom';
 
 export const Movies = (props) => {
 
     const [movies, setMovies] = useState([]);
 
+    const chosenDirector = props.director; //used before, changed to url because using props would stop after refreshing the page
+
+    const pickDirector = useLocation().pathname.split('/')[2]
+
     async function fetchData() {
         try {
-            const response = await axios.get(`http://localhost:5000/movies/${props.director}`);
+
+            const response = await axios.get(`http://localhost:5000/movies/${pickDirector}`);
             setMovies(response.data);
-            //console.log("hello my name is " + props.director);
+
 
         } catch (error) {
             alert(error.message);
@@ -23,6 +29,7 @@ export const Movies = (props) => {
     useEffect(() => {
 
         fetchData();
+        //console.log(chosenDirector);
 
     }, [])
 
@@ -32,19 +39,23 @@ export const Movies = (props) => {
 
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}>
-            <Row>
-                {movies.map((movie, id) => (
-                    <Col className="col-md-3" key={id}>
-                        <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
-                    </Col>
-                ))}
-            </Row>
-        </div>
+        <>
+
+            <div
+                className="container-fluid"
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                <Row>
+                    {movies.map((movie, id) => (
+                        <Col className="col-md-3" key={id}>
+                            <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        </>
     )
 }
