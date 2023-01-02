@@ -5,13 +5,13 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 import { Row, Col } from "react-bootstrap";
 
-export const Movies = (props) => {
+export const MoviesAll = (props) => {
 
     const [movies, setMovies] = useState([]);
 
     async function fetchData() {
         try {
-            const response = await axios.get(`http://localhost:5000/movies/${props.director}`);
+            const response = await axios.get(`http://localhost:5000/movies`);
             setMovies(response.data);
             //console.log("hello my name is " + props.director);
 
