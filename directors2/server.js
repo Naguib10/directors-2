@@ -34,8 +34,16 @@ app.get("/movies", async (req, res) => {
     //res.send("hello there");
     //var chosenDirector = req.body.director;
     chosenDirector = "Darren Aronofsky";
+    const allMovies = await db.collection('movies').find().toArray();
+    res.json(allMovies);
+
+})
+
+app.get("/movies/:name", async (req, res) => {
+    const chosenDirector = req.params.name;
     const allMovies = await db.collection('movies').find({ director: chosenDirector }).toArray();
     res.json(allMovies);
+    //console.log(chosenDirector);
 
 })
 

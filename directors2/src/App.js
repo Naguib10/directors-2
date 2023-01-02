@@ -7,11 +7,14 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 import { Home } from "./pages/Home";
 import Nav from "./components/Nav";
+import { MoviesAll } from "./pages/MoviesAll";
 
 function App() {
 
   const [directors, setDirectors] = useState([]);
   const [movies, setMovies] = useState([]);
+
+  const [chosenDirector, setChosenDirector] = useState("");
 
   async function fetchData() {
     try {
@@ -29,19 +32,21 @@ function App() {
 
   }, [])
 
+
+  function showMovies(incomingDirector) {
+    setChosenDirector(incomingDirector);
+  }
+
   return (
     <div className="App">
-      {/* <CreateForm setDirectors={setDirectors} />
-      {directors.map((director, id) => {
-        return <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} />
-      })} */}
       <Nav />
 
       <Routes>
-        <Route path="/" element={<Home />}>Home</Route>
+        <Route path="/" element={<Home search={showMovies} />}>Home</Route>
         <Route path="/add-d" element={<CreateForm setDirectors={setDirectors} />}>Add Directors</Route>
         <Route path="/add-m" element={<CreateMovie directors={directors} />}>Add Movies</Route>
-        <Route path="/movies" element={<Movies />}>Movies</Route>
+        <Route path="/movies" element={<MoviesAll />}>Movies</Route>
+        <Route path="/movies/:name" element={<Movies director={chosenDirector} />}>Movies</Route>
       </Routes>
 
 
