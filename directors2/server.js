@@ -68,13 +68,12 @@ app.post("/create-movie", upload.single("photo"), async (req, res) => {
     }
 
     const info = await db.collection("movies").insertOne(req.body);
-    const newMovie = await db.collection("movies").findOne({ _id: new ObjectId(info.insertedId) })
-    res.send(newMovie);
-    //console.log("the new is " + newDirector);
+    // const newMovie = await db.collection("movies").findOne({ _id: new ObjectId(info.insertedId) })
+    // res.send(newMovie);
+
 })
 
 app.delete("/movies/:id", async (req, res) => {
-    //const doc = await db.collection("movies").findOne({ _id: new ObjectId(req.params.id) })
     const doc = await db.collection("movies").findOne({ _id: new ObjectId(req.params.id) })
     if (doc.photo) {
         fse.remove(path.join("public", "photos", doc.photo))
