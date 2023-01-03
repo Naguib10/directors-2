@@ -6,6 +6,7 @@ import axios from "axios";
 import { Row, Col } from "react-bootstrap";
 import { useLocation, useParams } from 'react-router-dom';
 
+
 export const Movies = (props) => {
 
     const [movies, setMovies] = useState([]);

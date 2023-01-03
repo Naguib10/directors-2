@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import axios from 'axios';
+import EditMovie from "../components/EditMovie";
 
 function TextExample(props) {
 
@@ -29,7 +30,8 @@ function TextExample(props) {
                 </div>
             </Card.Body>
 
-            <button className='btn btn-outline-primary btn-sm float-start' onClick={logD}>Edit</button>
+            {/* <button className='btn btn-outline-primary btn-sm float-start' onClick={logD}>Edit</button> */}
+            <EditMovie />
             <button className='btn btn-outline-danger btn-sm float-end' onClick={deleteMovie}>Delete</button>
         </Card >
 
