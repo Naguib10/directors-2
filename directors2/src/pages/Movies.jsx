@@ -33,8 +33,9 @@ export const Movies = (props) => {
 
     }, [])
 
-    function logD() {
-        console.log(movies);
+    function removeMovie(movieId) {
+        setMovies((prev) =>
+            prev.filter((movie) => movie._id != movieId))
     }
 
 
@@ -51,7 +52,8 @@ export const Movies = (props) => {
                 <Row>
                     {movies.map((movie, id) => (
                         <Col className="col-md-3" key={id}>
-                            <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
+                            <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director}
+                                photo={movie.photo} id={movie._id} remove={removeMovie} />
                         </Col>
                     ))}
                 </Row>

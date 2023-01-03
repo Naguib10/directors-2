@@ -73,6 +73,11 @@ app.post("/create-movie", upload.single("photo"), async (req, res) => {
     //console.log("the new is " + newDirector);
 })
 
+app.delete("/movies/:id", async (req, res) => {
+    //const doc = await db.collection("movies").findOne({ _id: new ObjectId(req.params.id) })
+    db.collection("movies").deleteOne({ _id: new ObjectId(req.params.id) })
+})
+
 function myCleanup(req, res, next) {
     if (typeof req.body.name != "string") req.body.name = ""
     if (typeof req.body.dob != "string") req.body.dob = ""
