@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 
 function TextExample(props) {
 
@@ -13,22 +14,23 @@ function TextExample(props) {
 
 
     return (
-
-        <Card onClick={showMovies} >
-
-            <Card.Body>
+        <Col className="col-md-3 text-center">
+            <Card onClick={showMovies} >
                 <Link to={`/movies/${props.name}`} style={{ textDecoration: 'none' }}>
-                    {/* <img src={props.photo ? `/photos/${props.photo}` : ''} /> */}
-                    <Card.Img variant="top" src={`/photos/${props.photo}`} alt={props.name} />
-                    <Card.Title>{props.name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Director</Card.Subtitle>
-                    <Card.Text>
-                        Born in {props.dob}
-                    </Card.Text>
-                </Link>
-            </Card.Body>
+                    <Card.Body>
 
-        </Card >
+                        {/* <img src={props.photo ? `/photos/${props.photo}` : ''} /> */}
+                        <Card.Img className="rounded-circle" width="70%" variant="top" src={`/photos/${props.photo}`} alt={props.name} />
+                        <Card.Title>{props.name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Director</Card.Subtitle>
+                        <Card.Text>
+                            Born in {props.dob}
+                        </Card.Text>
+
+                    </Card.Body>
+                </Link>
+            </Card >
+        </Col>
 
     );
 }

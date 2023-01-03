@@ -45,10 +45,10 @@ export const Home = (props) => {
 
             <Row>
                 {directors.map((director, id) => (
-                    <Col className="col-md-3" key={id}>
-                        <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} search={grabDirector} />
 
-                    </Col>
+                    <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} search={grabDirector} />
+
+
                 ))}
             </Row>
             {/* <button onClick={logD}>log directors</button> */}
