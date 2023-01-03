@@ -34,10 +34,8 @@ export const Movies = (props) => {
     }, [])
 
     function removeMovie(movieId) {
-        setMovies((prev) =>
-            prev.filter((movie) => movie._id != movieId))
+        setMovies((prev) => prev.filter((movie) => movie._id != movieId))
     }
-
 
     return (
         <>

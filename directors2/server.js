@@ -75,6 +75,10 @@ app.post("/create-movie", upload.single("photo"), async (req, res) => {
 
 app.delete("/movies/:id", async (req, res) => {
     //const doc = await db.collection("movies").findOne({ _id: new ObjectId(req.params.id) })
+    const doc = await db.collection("movies").findOne({ _id: new ObjectId(req.params.id) })
+    if (doc.photo) {
+        fse.remove(path.join("public", "photos", doc.photo))
+    }
     db.collection("movies").deleteOne({ _id: new ObjectId(req.params.id) })
 })
 
