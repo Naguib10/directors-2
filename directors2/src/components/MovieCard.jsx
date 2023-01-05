@@ -31,7 +31,7 @@ function TextExample(props) {
             </Card.Body>
 
             {/* <button className='btn btn-outline-primary btn-sm float-start' onClick={logD}>Edit</button> */}
-            <EditMovie />
+            <EditMovie director={props.director} movie={props.name} year={props.dop} photo={props.photo} directors={props.directors} id={props.id} />
             <button className='btn btn-outline-danger btn-sm float-end' onClick={deleteMovie}>Delete</button>
         </Card >
 
