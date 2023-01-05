@@ -74,15 +74,15 @@ app.post("/create-movie", upload.single("photo"), async (req, res) => {
 })
 
 
-app.put("/update-movie", upload.single("photo"), async (req, res) => {
+app.put("/update-movie/:id", upload.single("photo"), async (req, res) => {
     if (req.file) {
         const photoFileName = `${Date.now()}.jpg`;
         await sharp(req.file.buffer).resize(600, 600).jpeg({ quality: 60 }).toFile(path.join("public", "photos", photoFileName));
         req.body.photo = photoFileName;
     }
 
-    const info = await db.collection("movies").findOneAndUpdate({ _id: ObjectId(req.body._id) }, { $set: req.body });
-    //console.log(req.body.name);
+    const info = await db.collection("movies").findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $set: req.body });
+
 })
 
 
