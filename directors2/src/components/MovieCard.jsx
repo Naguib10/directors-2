@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditMovie from "../components/EditMovie";
 
@@ -13,6 +13,7 @@ function TextExample(props) {
         const test = axios.delete(`http://localhost:5000/movies/${props.id}`);
         props.remove(props.id);
     }
+
 
     return (
 

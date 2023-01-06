@@ -8,7 +8,7 @@ import { Row, Col } from "react-bootstrap";
 export const MoviesAll = (props) => {
 
     const [movies, setMovies] = useState([]);
-
+    const [isEdited, setIsEdited] = useState(false);
 
     async function fetchData() {
         try {
@@ -24,6 +24,10 @@ export const MoviesAll = (props) => {
         fetchData();
     }, [])
 
+    useEffect(() => {
+        fetchData();
+        setIsEdited(false);
+    }, [isEdited])
 
     function removeMovie(movieId) {
         setMovies((prev) =>
@@ -31,7 +35,7 @@ export const MoviesAll = (props) => {
     }
 
     function editMovie() {
-        fetchData();
+        setIsEdited(true);
     }
 
 
