@@ -27,9 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    //console.log(directors);
     fetchData();
-
   }, [])
 
 

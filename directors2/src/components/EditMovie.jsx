@@ -36,7 +36,7 @@ function Example(props) {
         //console.log(data);
         handleClose();
         console.log("edit movie");
-        props.edit();
+        await props.edit();
         const newPhoto = await axios.put(`http://localhost:5000/update-movie/${props.id}`, data, { headers: { "Content-Type": "multipart/form-data" } });
 
 

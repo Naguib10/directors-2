@@ -29,7 +29,7 @@ export const MoviesAll = (props) => {
             prev.filter((movie) => movie._id != movieId))
     }
 
-    function editMovie() {
+    async function editMovie() {
         fetchData();
     }
 
@@ -49,6 +49,7 @@ export const MoviesAll = (props) => {
                     </Col>
                 ))}
             </Row>
+            <button onClick={() => { console.log(movies) }}>log movies</button>
         </div>
     )
 }

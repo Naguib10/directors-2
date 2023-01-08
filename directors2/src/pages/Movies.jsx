@@ -38,8 +38,8 @@ export const Movies = (props) => {
         setMovies((prev) => prev.filter((movie) => movie._id != movieId))
     }
 
-    function editMovie() {
-        setMovies((prevData) => [...prevData]);
+    async function editMovie() {
+        await fetchData();
     }
 
     return (
