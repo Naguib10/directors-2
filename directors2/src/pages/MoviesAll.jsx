@@ -13,7 +13,7 @@ export const MoviesAll = (props) => {
         try {
             const response = await axios.get(`http://localhost:5000/movies`);
             setMovies(response.data);
-            //console.log("hello my name is " + props.director);
+            console.log(response.data);
 
         } catch (error) {
             alert(error.message);
@@ -21,13 +21,17 @@ export const MoviesAll = (props) => {
     }
 
     useEffect(() => {
-
         fetchData();
-
     }, [])
 
-    function logD() {
-        console.log(movies);
+
+    function removeMovie(movieId) {
+        setMovies((prev) =>
+            prev.filter((movie) => movie._id != movieId))
+    }
+
+    async function editMovie() {
+        await fetchData();
     }
 
 
@@ -41,10 +45,12 @@ export const MoviesAll = (props) => {
             <Row>
                 {movies.map((movie, id) => (
                     <Col className="col-md-3" key={id}>
-                        <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director} photo={movie.photo} />
+                        <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director}
+                            photo={movie.photo} id={movie._id} remove={removeMovie} directors={props.directors} edit={editMovie} />
                     </Col>
                 ))}
             </Row>
+            <button onClick={() => { console.log(movies) }}>log movies</button>
         </div>
     )
 }

@@ -27,9 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    //console.log(directors);
     fetchData();
-
   }, [])
 
 
@@ -45,8 +43,8 @@ function App() {
         <Route path="/" element={<Home search={showMovies} />}>Home</Route>
         <Route path="/add-d" element={<CreateForm setDirectors={setDirectors} />}>Add Directors</Route>
         <Route path="/add-m" element={<CreateMovie directors={directors} />}>Add Movies</Route>
-        <Route path="/movies" element={<MoviesAll />}>Movies</Route>
-        <Route path="/movies/:name" element={<Movies director={chosenDirector} />}>Movies</Route>
+        <Route path="/movies" element={<MoviesAll directors={directors} />}>Movies</Route>
+        <Route path="/movies/:name" element={<Movies directors={directors} director={chosenDirector} />}>Movies</Route>
       </Routes>
 
 

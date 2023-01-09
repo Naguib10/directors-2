@@ -33,9 +33,10 @@ app.get("/test", async (req, res) => {
 app.get("/movies", async (req, res) => {
     //res.send("hello there");
     //var chosenDirector = req.body.director;
-    chosenDirector = "Darren Aronofsky";
+    //chosenDirector = "Darren Aronofsky";
     const allMovies = await db.collection('movies').find().toArray();
     res.json(allMovies);
+    console.log(allMovies);
 
 })
 
@@ -68,9 +69,32 @@ app.post("/create-movie", upload.single("photo"), async (req, res) => {
     }
 
     const info = await db.collection("movies").insertOne(req.body);
-    const newMovie = await db.collection("movies").findOne({ _id: new ObjectId(info.insertedId) })
-    res.send(newMovie);
-    //console.log("the new is " + newDirector);
+    // const newMovie = await db.collection("movies").findOne({ _id: new ObjectId(info.insertedId) })
+    // res.send(newMovie);
+
+})
+
+
+app.put("/update-movie/:id", upload.single("photo"), async (req, res) => {
+    if (req.file) {
+        const photoFileName = `${Date.now()}.jpg`;
+        await sharp(req.file.buffer).resize(600, 600).jpeg({ quality: 60 }).toFile(path.join("public", "photos", photoFileName));
+        req.body.photo = photoFileName;
+    }
+
+    const info = await db.collection("movies").findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $set: req.body });
+    console.log(req.body);
+    res.send();
+
+})
+
+
+app.delete("/movies/:id", async (req, res) => {
+    const doc = await db.collection("movies").findOne({ _id: new ObjectId(req.params.id) })
+    if (doc.photo) {
+        fse.remove(path.join("public", "photos", doc.photo))
+    }
+    db.collection("movies").deleteOne({ _id: new ObjectId(req.params.id) })
 })
 
 function myCleanup(req, res, next) {
