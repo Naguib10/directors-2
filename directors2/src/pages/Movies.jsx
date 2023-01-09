@@ -20,7 +20,6 @@ export const Movies = (props) => {
 
             const response = await axios.get(`http://localhost:5000/movies/${name}`);
             setMovies(response.data);
-            //console.log("this is the name " + name);
 
         } catch (error) {
             alert(error.message);
@@ -28,10 +27,7 @@ export const Movies = (props) => {
     }
 
     useEffect(() => {
-
         fetchData();
-        //console.log(chosenDirector);
-
     }, [])
 
     function removeMovie(movieId) {

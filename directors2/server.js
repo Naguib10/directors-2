@@ -83,7 +83,6 @@ app.put("/update-movie/:id", upload.single("photo"), async (req, res) => {
     }
 
     const info = await db.collection("movies").findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $set: req.body });
-    console.log(req.body);
     res.send();
 
 })
