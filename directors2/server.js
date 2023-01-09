@@ -33,9 +33,10 @@ app.get("/test", async (req, res) => {
 app.get("/movies", async (req, res) => {
     //res.send("hello there");
     //var chosenDirector = req.body.director;
-    chosenDirector = "Darren Aronofsky";
+    //chosenDirector = "Darren Aronofsky";
     const allMovies = await db.collection('movies').find().toArray();
     res.json(allMovies);
+    console.log(allMovies);
 
 })
 
@@ -82,6 +83,8 @@ app.put("/update-movie/:id", upload.single("photo"), async (req, res) => {
     }
 
     const info = await db.collection("movies").findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $set: req.body });
+    console.log(req.body);
+    res.send();
 
 })
 

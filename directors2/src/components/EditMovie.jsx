@@ -35,10 +35,10 @@ function Example(props) {
 
         //console.log(data);
         handleClose();
-        console.log("edit movie");
-        await props.edit();
-        const newPhoto = await axios.put(`http://localhost:5000/update-movie/${props.id}`, data, { headers: { "Content-Type": "multipart/form-data" } });
 
+        const newPhoto = await axios.put(`http://localhost:5000/update-movie/${props.id}`, data, { headers: { "Content-Type": "multipart/form-data" } });
+        console.log("edit movie hamadaaaa");
+        await props.edit();
 
     }
 

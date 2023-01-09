@@ -13,6 +13,7 @@ export const MoviesAll = (props) => {
         try {
             const response = await axios.get(`http://localhost:5000/movies`);
             setMovies(response.data);
+            console.log(response.data);
 
         } catch (error) {
             alert(error.message);
@@ -30,7 +31,7 @@ export const MoviesAll = (props) => {
     }
 
     async function editMovie() {
-        fetchData();
+        await fetchData();
     }
 
 
