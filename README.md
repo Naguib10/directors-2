@@ -10,6 +10,16 @@ A mern project written in javascript. React js was used for building the front-e
 
 ## Getting Started
 
+* For starting the backend server on localhost:5000:
+```
+npm run back
+```
+
+* For running the app on the client side localhost:3000:
+```
+npm start
+```
+
 ### Dependencies
 
 * react
@@ -24,15 +34,3 @@ A mern project written in javascript. React js was used for building the front-e
 * sharp
 * sanitize-html
 
-
-### Executing program
-
-* For starting the backend server on localhost:5000:
-```
-npm run back
-```
-
-* For running the app on the client side localhost:3000:
-```
-npm start
-```
