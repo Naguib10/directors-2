@@ -2,7 +2,7 @@
 
 # Directors App
 
-A collection of my favourite movie directors and some of their movies. With the ability to add directors, and add, remove or edit movies.
+A collection of my favourite movie directors and some of their movies. With the ability to add, remove or edit movies, or add directors.
 
 ## Description
 
