@@ -12,11 +12,13 @@ A mern project written in javascript. React js was used for building the front-e
 
 * For starting the backend server on localhost:5000:
 ```
+cd directors2
 npm run back
 ```
 
 * For running the app on the client side localhost:3000:
 ```
+cd directors2
 npm start
 ```
 
