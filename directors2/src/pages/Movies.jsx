@@ -39,24 +39,24 @@ export const Movies = (props) => {
     }
 
     return (
-        <>
 
-            <div
-                className="container-fluid"
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                <Row>
-                    {movies.map((movie, id) => (
-                        <Col className="col-md-3" key={id}>
-                            <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director}
-                                photo={movie.photo} id={movie._id} remove={removeMovie} directors={props.directors} edit={editMovie} />
-                        </Col>
-                    ))}
-                </Row>
-            </div>
-        </>
+
+        <div
+            className="container"
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+            <Row>
+                {movies.map((movie, id) => (
+                    <Col className="" key={id}>
+                        <MovieCard key={id} name={movie.name} dop={movie.dop} director={movie.director}
+                            photo={movie.photo} id={movie._id} remove={removeMovie} directors={props.directors} edit={editMovie} />
+                    </Col>
+                ))}
+            </Row>
+        </div>
+
     )
 }
