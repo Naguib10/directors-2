@@ -6,7 +6,7 @@ A collection of my favourite movie directors and some of their movies. With the 
 
 ## Description
 
-A mern project written in javascript. React js was used for building the front-end, Node.js and express for the backend, and Mongodb for the database.
+A mern project written in javascript. React js was used for building the front-end, react bootstrap for the components, Node.js and express for the backend, and Mongodb for the database.
 
 ## Getting Started
 
