@@ -3,8 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 function BasicExample(props) {
     return (
         <Nav
-            //activeKey="/home"
-            activeKey={props.location}
+        //activeKey="/"
+        //activeKey={props.location}
         >
             <Nav.Item>
                 <Nav.Link href="/">Directors</Nav.Link>

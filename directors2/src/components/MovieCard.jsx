@@ -21,7 +21,7 @@ function TextExample(props) {
 
             <Card.Body>
                 <div>
-                    <Card.Img variant="top" src={`/photos/${props.photo}`} alt={props.name} />
+                    <Card.Img variant="top" src={`/photos/${props.photo}`} alt={props.name} width="70%" />
                     <Card.Title>{props.name}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{props.dop}</Card.Subtitle>
                     <Card.Text>
