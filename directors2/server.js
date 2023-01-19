@@ -50,14 +50,8 @@ app.get("/movies/:name", async (req, res) => {
 
 app.get("/search", async (req, res) => {
     const directorName = req.query.name;
-    // const projection = {
-    //     _id: 0,
-    //     name: 1,
-    // };
-    // const directors = await db.collection('directors').find({ $text: { $search: directorName } }).project(projection).toArray();
     const directors = await db.collection('directors').find({ $text: { $search: directorName } }).toArray();
     res.json(directors);
-    console.log(directors);
 })
 
 app.post("/create-director", upload.single("photo"), myCleanup, async (req, res) => {

@@ -20,15 +20,9 @@ function BasicExample(props) {
     }
 
     function searchResults() {
-        //await axios.get(`http://localhost:5000/search?name=${director}`);
-
-        //console.log(director.title);
         props.search(director.title);
     }
 
-    // function searchDirector() {
-    //     props.search();
-    // }
 
     return (
         <InputGroup>

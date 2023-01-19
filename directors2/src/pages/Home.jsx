@@ -46,17 +46,19 @@ export const Home = (props) => {
                 <br></br>
             </div>
             <div
+                className="m-auto"
                 style={{
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: 'center'
 
                 }}>
 
                 <Row>
                     {directors.map((director, id) => (
-
-                        <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} search={grabDirector} />
-
+                        <Col className="" key={id}>
+                            <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} search={grabDirector} />
+                        </Col>
 
                     ))}
                 </Row>

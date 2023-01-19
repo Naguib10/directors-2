@@ -1,6 +1,7 @@
 import React, { useState, useParams, useEffect } from 'react';
 import axios from 'axios';
 import DirectorCard from '../components/DirectorCard';
+import { Row, Col } from "react-bootstrap";
 
 export const SearchResults = (props) => {
 
@@ -19,15 +20,21 @@ export const SearchResults = (props) => {
 
     return (
         <div
+            className="container m-auto"
             style={{
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center'
 
             }}>
+            <Row>
 
-            {directors.map((director, id) => (
-                <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} />
-            ))}
+                {directors.map((director, id) => (
+                    <Col>
+                        <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} />
+                    </Col>
+                ))}
+            </Row>
         </div>
     )
 }
