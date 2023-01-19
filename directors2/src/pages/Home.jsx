@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 import { Row, Col } from "react-bootstrap";
+import Search from '../components/Search';
 import Nav from '../components/Nav';
 import { Link } from 'react-router-dom';
 
@@ -33,25 +34,36 @@ export const Home = (props) => {
         props.search(director);
     }
 
+    function grabSearch(searchDir) {
+        props.searchDir(searchDir);
+    }
+
     return (
 
-        <div
-            style={{
-                display: 'flex',
-                alignItems: 'center',
+        <>
+            <div className="col-md-4 m-auto">
+                <Search search={grabSearch} />
+                <br></br>
+            </div>
+            <div
+                className="m-auto"
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
 
-            }}>
+                }}>
 
+                <Row>
+                    {directors.map((director, id) => (
+                        <Col className="" key={id}>
+                            <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} search={grabDirector} />
+                        </Col>
 
-            <Row>
-                {directors.map((director, id) => (
-
-                    <DirectorCard key={id} name={director.name} dob={director.dob} photo={director.photo} id={director._id} search={grabDirector} />
-
-
-                ))}
-            </Row>
-            {/* <button onClick={logD}>log directors</button> */}
-        </div>
+                    ))}
+                </Row>
+                {/* <button onClick={logD}>log directors</button> */}
+            </div>
+        </>
     )
 }

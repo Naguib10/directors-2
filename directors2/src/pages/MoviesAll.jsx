@@ -49,7 +49,6 @@ export const MoviesAll = (props) => {
                     </Col>
                 ))}
             </Row>
-            <button onClick={() => { console.log(movies) }}>log movies</button>
         </div>
     )
 }

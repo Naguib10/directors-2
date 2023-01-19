@@ -48,6 +48,12 @@ app.get("/movies/:name", async (req, res) => {
 
 })
 
+app.get("/search", async (req, res) => {
+    const directorName = req.query.name;
+    const directors = await db.collection('directors').find({ $text: { $search: directorName } }).toArray();
+    res.json(directors);
+})
+
 app.post("/create-director", upload.single("photo"), myCleanup, async (req, res) => {
     if (req.file) {
         const photoFileName = `${Date.now()}.jpg`;

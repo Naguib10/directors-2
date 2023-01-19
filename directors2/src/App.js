@@ -8,11 +8,14 @@ import axios from "axios";
 import { Home } from "./pages/Home";
 import Nav from "./components/Nav";
 import { MoviesAll } from "./pages/MoviesAll";
+import { SearchResults } from "./pages/SearchResults";
+import Search from "./components/Search";
 
 function App() {
 
   const [directors, setDirectors] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [searchDir, setSearchDir] = useState("");
 
   const [chosenDirector, setChosenDirector] = useState("");
 
@@ -35,16 +38,23 @@ function App() {
     setChosenDirector(incomingDirector);
   }
 
+  function searchDirector(typedDir) {
+    setSearchDir(typedDir);
+    console.log(searchDir);
+  }
+
   return (
     <div className="App">
       <Nav />
 
       <Routes>
-        <Route path="/" element={<Home search={showMovies} />}>Home</Route>
+        <Route path="/" element={<Home search={showMovies} searchDir={searchDirector} />}>Home</Route>
         <Route path="/add-d" element={<CreateForm setDirectors={setDirectors} />}>Add Directors</Route>
         <Route path="/add-m" element={<CreateMovie directors={directors} />}>Add Movies</Route>
         <Route path="/movies" element={<MoviesAll directors={directors} />}>Movies</Route>
         <Route path="/movies/:name" element={<Movies directors={directors} director={chosenDirector} />}>Movies</Route>
+        <Route path="/searchresults" element={<SearchResults search={searchDir} />}>Search Results</Route>
+        <Route path="/search" element={<Search search={searchDirector} />}>Search</Route>
       </Routes>
 
 
